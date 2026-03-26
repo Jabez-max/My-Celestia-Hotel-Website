@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .confirmation-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .receipt-card {
+            background: #fff;
+            width: 100%;
+            max-width: 650px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 8px solid #b88b4a;
+        }
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        .receipt-header h1 {
+            color: #28a745;
+            font-family: 'Times New Roman', serif;
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+        }
+        .receipt-header p {
+            color: #666;
+            margin: 0;
+        }
+        .receipt-details {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .receipt-details th, .receipt-details td {
+            padding: 15px 0;
+            border-bottom: 1px dashed #eaeaea;
+            text-align: left;
+        }
+        .receipt-details th {
+            color: #888;
+            font-weight: normal;
+            width: 40%;
+        }
+        .receipt-details td {
+            font-weight: bold;
+            color: #1a2332;
+            text-align: right;
+        }
+        .total-row td, .total-row th {
+            font-size: 1.3rem;
+            color: #b88b4a;
+            border-bottom: none;
+            padding-top: 20px;
+        }
+        .points-box {
+            background-color: #e8f5e9;
+            border: 1px solid #28a745;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .points-box p {
+            margin: 0;
+            color: #1e7e34;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .btn-print {
+            background-color: #f4f6f9;
+            color: #1a2332;
+            border: 1px solid #ccc;
+        }
+        .btn-print:hover { background-color: #e2e6ea; }
+        .btn-home {
+            background-color: #1a2332;
+            color: #fff;
+        }
+        .btn-home:hover { background-color: #b88b4a; color: #fff;}
+        
+        /* Itago ang mga buttons kapag nai-print na sa papel */
+        @media print {
+            body { background: #fff; }
+            .receipt-card { box-shadow: none; border-top: 2px solid #b88b4a; padding: 0; }
+            .action-buttons { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-page">
+        <div class="receipt-card">
+            
+            <div class="receipt-header">
+                <h1>✓ Booking Confirmed!</h1>
+                <p>Thank you for choosing Celestia Hotel. Your reservation is secured.</p>
+            </div>
+
+            <div class="points-box" id="points-container">
+                <p>🎉 You have earned <span id="conf-points" style="font-size: 1.4rem;">+0</span> for this stay!</p>
+            </div>
+
+            <table class="receipt-details">
+                <tr>
+                    <th>Booking Reference ID:</th>
+                    <td id="conf-id">Loading...</td>
+                </tr>
+                <tr>
+                    <th>Guest Name:</th>
+                    <td id="conf-name">Loading...</td>
+                </tr>
+                <tr>
+                    <th>Email Address:</th>
+                    <td id="conf-email">Loading...</td>
+                </tr>
+                <tr>
+                    <th>Room Type:</th>
+                    <td id="conf-room" style="color: #b88b4a;">Loading...</td>
+                </tr>
+                <tr>
+                    <th>Dates of Stay:</th>
+                    <td id="conf-dates">Loading...</td>
+                </tr>
+                <tr>
+                    <th>Occupancy:</th>
+                    <td id="conf-guests">Loading...</td>
+                </tr>
+                <tr id="savings-row">
+                    <th>Member Savings Applied:</th>
+                    <td id="conf-savings" style="color: #28a745;">PHP 0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <th>Total Amount to Pay:</th>
+                    <td id="conf-total">PHP 0.00</td>
+                </tr>
+            </table>
+
+            <div class="action-buttons">
+                <button class="btn btn-print" onclick="window.print()">🖨️ Print Receipt</button>
+                <a href="dashboard.html" class="btn btn-home">Go to My Dashboard</a>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <script src="data.js"></script>
+    <script src="global.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">CELESTIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Back to Home</a></li>
+            <li><a href="index.html#rooms">Rooms & Suites</a></li>
+            <li><a href="index.html#dining">Dining</a></li>
+            <li><a href="meetings-events.html">Events</a></li>
+            <li><a href="weddings.html">Weddings</a></li>
+            <li class="auth-buttons">
+                <a href="login.html" class="btn login-btn">Login</a>
+                <a href="signup.html" class="btn register-btn">Sign Up</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="auth-wrapper" style="max-width: 550px; margin: 80px auto;">
+        
+        <h1 class="register-main-title" style="text-align: center;">Create a Celestia Account</h1>
+
+        <div class="register-form-container" style="background: #fff; padding: 40px; border: 1px solid #e1ebf4; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 8px;">
+            
+            <h3 class="register-sub-title" style="text-align: center; margin-bottom: 30px;">Sign up with your email</h3>
+            
+            <form onsubmit="handleRegister(event)">
+                
+                <div style="display: flex; gap: 20px; width: 100%; box-sizing: border-box;">
+                    <div class="auth-simple-field" style="flex: 1; min-width: 0;">
+                        <label for="reg-fname">First Name*</label>
+                        <input type="text" id="reg-fname" placeholder="First Name" required style="width: 100%; box-sizing: border-box;">
+                    </div>
+                    <div class="auth-simple-field" style="flex: 1; min-width: 0;">
+                        <label for="reg-lname">Last Name*</label>
+                        <input type="text" id="reg-lname" placeholder="Last Name" required style="width: 100%; box-sizing: border-box;">
+                    </div>
+                </div>
+
+                <div class="auth-simple-field" style="width: 100%;">
+                    <label for="reg-email">Email Address*</label>
+                    <input type="email" id="reg-email" placeholder="Email Address" required style="width: 100%; box-sizing: border-box;">
+                </div>
+                
+                <div class="auth-simple-field password-field-group" style="width: 100%;">
+                    <label for="reg-password">Password*</label>
+                    <div class="password-input-wrapper" style="width: 100%;">
+                        <input type="password" id="reg-password" placeholder="Create a password" required style="width: 100%; box-sizing: border-box;">
+                        <button type="button" class="toggle-pass-btn" onclick="togglePassword()">
+                            👁️<br>SHOW
+                        </button>
+                    </div>
+                </div>
+                <div class="policy-box-transparent" style="margin-top: 10px; margin-bottom: 25px;">
+                    <label class="custom-checkbox-label">
+                        <input type="checkbox" required> 
+                        <span>I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</span>
+                    </label>
+                </div>
+
+                <div class="auth-btn-row">
+                    <button type="submit" class="btn-solid btn-gold" style="width: 100%;">CREATE ACCOUNT</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px; font-family: Arial, sans-serif; line-height: 1.6;">
+                    <p style="color: #666; font-size: 0.95rem;">Want to enjoy exclusive perks and points? <br><a href="register.html" style="color: #b88b4a; font-weight: bold; text-decoration: none;">Join as a Member instead</a>.</p>
+                    <p style="color: #666; font-size: 0.95rem; margin-top: 15px;">Already have an account? <a href="login.html" style="color: #b88b4a; font-weight: bold; text-decoration: none;">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>CELESTIA</h2>
+                <p>Elevated Luxury</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>1 Celestia Avenue, Bonifacio Global City</p>
+                <p>Taguig City, Metro Manila, Philippines</p>
+                <p>Phone: +63 2 8777 9999</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Celestia Hotel. All Rights Reserved. Designed by Jabez Dulay.</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="global.js"></script>
+</body>
+</html>

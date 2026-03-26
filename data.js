@@ -1,0 +1,40 @@
+
+
+const roomsData = [
+    { name: "Classic Deluxe Room", tag: "HIGH FLOOR | LARGE DOUBLE BED", images: ["https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg", "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg", "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg"], desc: "Experience luxury with our Classic Deluxe Room. Featuring an elegant design, plush bedding, and a perfectly designed space.", size: "30 Sqm / 322 Sq Ft", occupancy: 3, price: 8500, discount: 850, amenities: ["👍 EARLY CHECK-IN / LATE CHECK-OUT", "🚐 COMPLIMENTARY SHUTTLE BUS", "🍷 WELCOME DRINKS", "📶 COMPLIMENTARY WI-FI", "🧴 20% OFF SPA SERVICES", "☕ COFFEE / TEA FACILITIES"] },
+    { name: "Celestia Club Room", tag: "TOP BOOKED | BREAKFAST INCLUDED", images: ["https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg", "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg"], desc: "Feel like a VIP in your spacious room. Enjoy exclusive access to the Club Lounge, complimentary evening cocktails, and a breathtaking panoramic view.", size: "35 Sqm / 376 Sq Ft", occupancy: 3, price: 11200, discount: 1120, amenities: ["⭐ EXCLUSIVE LOUNGE ACCESS", "🍳 COMPLIMENTARY BREAKFAST", "📶 HIGH-SPEED WI-FI", "🛁 PREMIUM BATH AMENITIES", "👔 FREE LAUNDRY (2 PCS)"] },
+    { name: "Executive Junior Suite", tag: "MOST POPULAR | CITY VIEW", images: ["https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg", "https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg"], desc: "Ample space for families or couples with a comfortable seating area. Perfect for those who want a bit more room to stretch out and relax.", size: "55 Sqm / 592 Sq Ft", occupancy: 4, price: 15500, discount: 1550, amenities: ["🛋️ SEPARATE LIVING AREA", "☕ Nespresso MACHINE", "📶 HIGH-SPEED WI-FI", "🏊 EXCLUSIVE POOL ACCESS", "🍎 DAILY FRESH FRUITS"] },
+    { name: "Grand Executive Suite", tag: "CORNER SUITE | LOUNGE ACCESS", images: ["https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg", "https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg"], desc: "The suite includes a separated living space, a grand workspace, and a complimentary minibar. Ideal for business travelers.", size: "78 Sqm / 839 Sq Ft", occupancy: 4, price: 18900, discount: 1890, amenities: ["⭐ FULL LOUNGE ACCESS", "🍾 COMPLIMENTARY MINIBAR", "👔 FREE LAUNDRY (5 PCS)", "🚗 FREE VALET PARKING", "💼 PREMIUM BUSINESS DESK"] },
+    { name: "Signature Celestia Suite", tag: "BAY VIEW | BREAKFAST INCLUDED", images: ["https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg", "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"], desc: "A highly spacious suite complete with a private dining area and a balcony overlooking the stunning Manila Bay sunset.", size: "120 Sqm / 1291 Sq Ft", occupancy: 4, price: 32000, discount: 3200, amenities: ["🌅 PRIVATE BALCONY", "🍽️ PRIVATE DINING AREA", "🍳 IN-ROOM CHEF SERVICE", "🍾 PREMIUM CHAMPAGNE", "💆 1 HR FREE COUPLES SPA"] },
+    { name: "Royal Penthouse Suite", tag: "HIGHEST CATEGORY | BUTLER SERVICE", images: ["https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg", "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg"], desc: "Experience the pinnacle of luxury. Located on the topmost floor with panoramic 360 views, a private jacuzzi, and a 24/7 personal butler.", size: "180 Sqm / 1937 Sq Ft", occupancy: 5, price: 55000, discount: 5500, amenities: ["🤵 24/7 PERSONAL BUTLER", "🚁 FREE AIRPORT HELICOPTER", "🛁 PRIVATE JACUZZI", "🎥 PRIVATE CINEMA ROOM", "🍷 UNLIMITED PREMIUM BAR"] }
+];
+
+const menuVariations = {
+    odd: {
+        'breakfast': { title: 'Aurora Breakfast', subtitle: "TODAY's MENU", categories: [{ name: 'Morning Classics', items: [{ name: 'Buttermilk Pancakes', price: '455.00', desc: 'With whipped butter and berries.' }, { name: 'Classic Eggs Benedict', price: '520.00', desc: 'With rich hollandaise sauce.' }] }] },
+        'lunch': { title: 'Lunch A La Carte', subtitle: "TODAY's MENU", categories: [{ name: 'Main Entrees', items: [{ name: 'Grilled Atlantic Salmon', price: '850.00', desc: 'With roasted asparagus.' }] }] },
+        'dinner': { title: 'Dinner Buffet', subtitle: "AVAILABLE 6PM-10PM", categories: [{ name: 'Buffet Stations', items: [{ name: 'Weekday Dinner Buffet', price: '1,800.00 / pax', desc: 'International carving stations.' }] }] },
+        'asian': { title: 'Asian Delights', subtitle: "ALL DAY MENU", categories: [{ name: 'Asian Specialties', items: [{ name: 'Traditional Laksa', price: '550.00', desc: 'Spicy rich coconut curry.' }] }] },
+        'lounge-food': { title: 'Lounge Food Menu', subtitle: "AVAILABLE 4PM TO 12MN", categories: [{ name: 'Burgers & Sandwiches', items: [{ name: 'Heritage Wagyu Beef Burger', price: '655.00', desc: 'Premium Wagyu patty.' }] }] },
+        'pika-pika': { title: 'Pika Pika Menu', subtitle: "TAPAS & BITES", categories: [{ name: 'Savory Tapas', items: [{ name: 'Shrimp Gambas', price: '545.00', desc: 'Hot & Spicy shrimp.' }] }] },
+        'pool-food': { title: 'Poolside Bites', subtitle: "GOURMET SNACKS", categories: [{ name: 'Light', items: [{ name: 'Tropical Fruit Bowl', price: '380.00', desc: 'Seasonal fruits.' }] }] },
+        'pool-pika-pika': { title: 'Pool Pika Pika', subtitle: "SUNSET TAPAS", categories: [{ name: 'Tapas', items: [{ name: 'Salt & Pepper Squid', price: '450.00', desc: 'Crispy squid bites.' }] }] }
+    },
+    even: {
+        'breakfast': { title: 'Aurora Breakfast', subtitle: "TODAY's MENU", categories: [{ name: 'Morning Classics', items: [{ name: 'Belgian Waffles', price: '480.00', desc: 'With caramelized banana.' }, { name: 'Filipino Beef Tapa', price: '450.00', desc: 'With garlic rice and egg.' }] }] },
+        'lunch': { title: 'Lunch A La Carte', subtitle: "TODAY's MENU", categories: [{ name: 'Main Entrees', items: [{ name: 'Pan-Seared Sea Bass', price: '890.00', desc: 'With caper-dill sauce.' }] }] },
+        'dinner': { title: 'Dinner Buffet', subtitle: "AVAILABLE 6PM-10PM", categories: [{ name: 'Buffet Themes', items: [{ name: 'Mediterranean Grill Night', price: '1,950.00 / pax', desc: 'Unlimited lamb kebabs.' }] }] },
+        'asian': { title: 'Asian Delights', subtitle: "ALL DAY MENU", categories: [{ name: 'Asian Specialties', items: [{ name: 'Singaporean Chili Crab', price: '1,100.00', desc: 'Stir-fried crab.' }] }] },
+        'lounge-food': { title: 'Lounge Food Menu', subtitle: "AVAILABLE 4PM TO 12MN", categories: [{ name: 'Handcrafted Pizza', items: [{ name: '5 Cheese Garlic Spinach Pizza', price: '555.00', desc: 'Rich cheese blend.' }] }] },
+        'pika-pika': { title: 'Pika Pika Menu', subtitle: "TAPAS & BITES", categories: [{ name: 'Premium Platters', items: [{ name: 'Assorted Cheese Board', price: '625.00', desc: 'Fine cheeses.' }] }] },
+        'pool-food': { title: 'Poolside Bites', subtitle: "GOURMET SNACKS", categories: [{ name: 'Savory Snacks', items: [{ name: 'Chicken Quesadilla', price: '420.00', desc: 'Grilled chicken and cheese.' }] }] },
+        'pool-pika-pika': { title: 'Pool Pika Pika', subtitle: "SUNSET TAPAS", categories: [{ name: 'Shareables', items: [{ name: 'Crispy Onion Rings', price: '320.00', desc: 'With spicy ranch.' }] }] }
+    }
+};
+
+const destinationData = {
+    "Asia": { "Philippines": ["Metro Manila", "Cebu City", "Boracay"], "Japan": ["Tokyo", "Osaka", "Kyoto"], "Singapore": ["Singapore City"], "Malaysia": ["Kuala Lumpur", "Penang"], "South Korea": ["Seoul"] },
+    "Europe": { "United Kingdom": ["London", "Edinburgh"], "France": ["Paris", "Nice"], "Italy": ["Rome", "Milan", "Venice"] },
+    "North America": { "United States": ["New York", "Los Angeles", "Miami"], "Canada": ["Toronto", "Vancouver"] },
+    "Middle East": { "United Arab Emirates": ["Dubai", "Abu Dhabi"], "Qatar": ["Doha"] }
+};

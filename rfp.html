@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request for Proposal | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="events.css">
+</head>
+<body class="rfp-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">CELESTIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Back to Home</a></li>
+            <li><a href="meetings-events.html">Meetings & Events</a></li>
+            <li><a href="weddings.html">Weddings</a></li>
+            <li><a href="auth.html" class="login-btn">Sign In / Join</a></li> 
+        </ul>
+    </nav>
+
+    <main class="rfp-main-container">
+        <div class="rfp-header">
+            <h1>Request for Proposal</h1>
+            <p>Let us help you put together the event of your dreams. Simply fill out this form, and we'll get back to you with the details you are looking for.</p>
+        </div>
+
+        <form class="rfp-form" onsubmit="submitRFP(event)">
+            
+            <div class="rfp-section">
+                <h2>Your Event Details</h2>
+                
+                <div class="rfp-row three-cols">
+                    <div class="rfp-field">
+                        <input type="text" id="eventName" required placeholder=" ">
+                        <label for="eventName">Event name*</label>
+                    </div>
+                    <div class="rfp-field">
+                        <select id="eventType" required>
+                            <option value="" disabled selected></option>
+                            <option value="corporate">Corporate Meeting</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="social">Social Gathering</option>
+                            <option value="conference">Conference / Exhibition</option>
+                        </select>
+                        <label for="eventType">Type of Event*</label>
+                    </div>
+                    <div class="rfp-field">
+                        <select id="attendees" required>
+                            <option value="" disabled selected></option>
+                            <option value="1-50">1 - 50</option>
+                            <option value="51-100">51 - 100</option>
+                            <option value="101-250">101 - 250</option>
+                            <option value="251-500">251 - 500</option>
+                            <option value="500+">500+</option>
+                        </select>
+                        <label for="attendees">Number of Attendees*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-radio-group">
+                    <span class="rfp-label-text">Do you require guest rooms?*</span>
+                    <label><input type="radio" name="guestRooms" value="yes" required> Yes</label>
+                    <label><input type="radio" name="guestRooms" value="no" required> No</label>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field disabled-field">
+                        <input type="text" value="Celestia Hotel Manila" readonly>
+                        <label>Your Preferred Hotel*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-setup-section">
+                    <span class="rfp-label-text" style="display: block; margin-bottom: 15px;">Your Preferred Event Setup*</span>
+                    <div class="setup-grid">
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🪑</span> Classroom</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🤝</span> Conference</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🖼️</span> Exhibits 10x10</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🎪</span> Exhibits 8x10</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🌙</span> Half Rounds</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🍸</span> Reception</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🍽️</span> Rounds of 10</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🍽️</span> Rounds of 8</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🎬</span> Theatre Chevron</div>
+                        <div class="setup-card" onclick="selectSetup(this)"><span>🧲</span> U-Shape</div>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col" style="margin-top: 30px;">
+                    <div class="rfp-field">
+                        <input type="text" id="additionalDetails" placeholder=" ">
+                        <label for="additionalDetails">Additional Details (optional)</label>
+                        <span class="field-hint">Please indicate any specific resources and requests you may have such as AV Equipment, Coffee...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rfp-section">
+                <h2>Your Event Dates</h2>
+                
+                <div class="rfp-row four-cols date-time-row" style="align-items: center;">
+                    <div class="rfp-field">
+                        <input type="date" id="startDate" required placeholder=" ">
+                        <label for="startDate">Start Date*</label>
+                    </div>
+                    <span style="font-family: Arial, sans-serif; color: #333; font-weight: bold; padding: 0 10px;">To</span>
+                    <div class="rfp-field">
+                        <input type="date" id="endDate" required placeholder=" ">
+                        <label for="endDate">End Date*</label>
+                    </div>
+                    
+                    <div class="rfp-field" style="margin-left: 20px;">
+                        <input type="time" id="startTime" required placeholder=" ">
+                        <label for="startTime">Start Time*</label>
+                    </div>
+                    <span style="font-family: Arial, sans-serif; color: #333; font-weight: bold; padding: 0 10px;">To</span>
+                    <div class="rfp-field">
+                        <input type="time" id="endTime" placeholder=" ">
+                        <label for="endTime">End Time*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-radio-group">
+                    <span class="rfp-label-text">Are your dates flexible?*</span>
+                    <label><input type="radio" name="flexibleDates" value="yes" required> Yes</label>
+                    <label><input type="radio" name="flexibleDates" value="no" required> No</label>
+                </div>
+
+                <div class="rfp-row two-cols" style="margin-top: 20px;">
+                    <div class="rfp-field">
+                        <input type="date" id="decisionDate" required placeholder=" ">
+                        <label for="decisionDate">Decision Date*</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rfp-section">
+                <h2>How did you hear about us?</h2>
+                <div class="rfp-checkbox-column">
+                    <label><input type="checkbox" name="hearAbout" value="blog"> Blog</label>
+                    <label><input type="checkbox" name="hearAbout" value="publication"> Publication</label>
+                    <label><input type="checkbox" name="hearAbout" value="friends"> Recommended by Friends/Colleagues</label>
+                    <label><input type="checkbox" name="hearAbout" value="search"> Search Engine (Google, Yahoo, etc.)</label>
+                    <label><input type="checkbox" name="hearAbout" value="social"> Social Media (Facebook, Twitter, LinkedIn, etc.)</label>
+                    <label class="other-input">
+                        <input type="checkbox" name="hearAbout" value="other"> 
+                        <input type="text" placeholder="Other..." class="inline-other">
+                    </label>
+                </div>
+            </div>
+
+            <div class="rfp-section">
+                <h2>Your Contact Details</h2>
+                
+                <div class="rfp-row two-cols">
+                    <div class="rfp-field">
+                        <input type="text" id="firstName" required placeholder=" ">
+                        <label for="firstName">First Name*</label>
+                    </div>
+                    <div class="rfp-field">
+                        <input type="text" id="lastName" required placeholder=" ">
+                        <label for="lastName">Last Name*</label>
+                    </div>
+                </div>
+                <div class="rfp-row two-cols">
+                    <div class="rfp-field">
+                        <input type="tel" id="phoneNumber" required placeholder=" ">
+                        <label for="phoneNumber">Phone Number*</label>
+                    </div>
+                    <div class="rfp-field">
+                        <input type="email" id="emailAdd" required placeholder=" ">
+                        <label for="emailAdd">Email Address*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-checkbox-column spaced-checks">
+                    <label style="font-weight: bold; color: #1a2332; font-size: 1rem;">
+                        <input type="checkbox" name="isBusiness"> Are you a business?
+                    </label>
+                    <label>
+                        <input type="checkbox" name="privacy" required> By submitting your request, you are agreeing to our <a href="#" style="color: #31708f; font-weight: bold; margin-left: 5px;">Privacy Policy.</a>
+                    </label>
+                </div>
+
+                <div class="dummy-recaptcha">
+                    <div class="rc-anchor">
+                        <input type="checkbox" required> I'm not a robot
+                    </div>
+                    <div class="rc-logo">
+                        <span style="font-size: 1.5rem;">♻️</span><br>reCAPTCHA
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <button type="submit" class="btn-solid btn-gold" style="padding: 15px 50px; font-size: 1rem;">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>CELESTIA</h2>
+                <p>Elevated Luxury</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>1 Celestia Avenue, Bonifacio Global City</p>
+                <p>Taguig City, Metro Manila, Philippines</p>
+                <p>Phone: +63 2 8777 9999</p>
+                <p>Email: reservations@celestiahotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Celestia Hotel. All Rights Reserved. Designed by Jabez Dulay.</p>
+        </div>
+    </footer>
+
+   <script src="data.js"></script>
+    <script src="global.js"></script>
+    <script>
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('type') === 'wedding') {
+                document.getElementById('eventType').value = 'wedding';
+            }
+        });
+    </script>
+</body>
+</html>

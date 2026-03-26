@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+
+    <nav class="navbar">
+        <div class="nav-brand">CELESTIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Back to Home</a></li>
+            <li><a href="index.html#rooms">Rooms</a></li>
+            <li><a href="index.html#dining">Dining</a></li>
+            <li><a href="meetings-events.html">Events</a></li>
+            <li><a href="dashboard.html" class="login-btn">My Profile</a></li> 
+        </ul>
+    </nav>
+
+    <div class="dash-subnav">
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="my-account.html">My Account</a></li>
+            <li><a href="my-points.html">My Points Management</a></li>
+            <li><a href="my-history.html">My History</a></li>
+            <li><a href="my-communication.html">My Communication Preferences</a></li>
+            <li><a href="my-lifestyle.html">My Lifestyle</a></li>
+            <li><a href="celestia-enquiry.html">Celestia Enquiry</a></li> 
+        </ul>
+    </div>
+    <main class="dash-main">
+        
+        <div class="dash-profile-banner">
+            <div class="profile-info-left">
+                <div class="profile-avatar">👤</div>
+                <div class="profile-text">
+                    <p class="welcome-text">WELCOME</p>
+                    <h1 id="dash-user-name">Guest User</h1>
+                    <span class="tier-badge">CLASSIC</span>
+                </div>
+            </div>
+            <div class="profile-visuals-right">
+                <div class="qr-placeholder">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=CelestiaMember" alt="QR Code">
+                </div>
+                <div class="digital-card">
+                    <p class="card-tier">CLASSIC</p>
+                    <p class="card-brand">CELESTIA</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-stats-row">
+            <div class="stat-col">
+                <p>MEMBER NUMBER</p>
+                <h3>2026030704463</h3>
+            </div>
+            <div class="stat-col">
+                <p>MEMBER SINCE</p>
+                <h3>2026</h3>
+            </div>
+            <div class="stat-col">
+                <p>POINTS AVAILABLE</p>
+                <h3>0</h3>
+            </div>
+            <div class="stat-links">
+                <a href="#">TRANSFER POINTS</a>
+                <a href="#">VIEW POINTS HISTORY</a>
+            </div>
+        </div>
+
+        <div class="dash-progress-container">
+            <div class="progress-left">
+                <p class="progress-title">0/10 NIGHTS</p>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill"></div>
+                    <div class="progress-target-icon">M</div>
+                </div>
+                <p class="progress-desc">Stay 10 nights to upgrade to the Silver tier status.</p>
+            </div>
+            <div class="progress-right">
+                <p class="next-tier-title">NEXT TIER BENEFITS</p>
+                <div class="tier-benefits-row">
+                    <div class="t-benefit"><span>⭐</span><p>15 Points for every PHP 50 spent on rooms and dining</p></div>
+                    <div class="t-benefit"><span>☕</span><p>Welcome Amenities</p></div>
+                    <div class="t-benefit"><span>🛏️</span><p>Room Upgrade to the next category</p></div>
+                    <div class="t-benefit"><span>🕒</span><p>Early Check-in / Late Check-out</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-bonus-banner">
+            <div class="bonus-icons">
+                <div class="b-icon-circle disabled">🔔</div>
+                <div class="b-icon-circle disabled">👤</div>
+                <div class="b-icon-circle active">📱</div>
+            </div>
+            <div class="bonus-text">
+                <p>Download Celestia App (on App Store or Google Play) today to book and check your reservation anytime, anywhere.<br>Download now and receive 250 bonus Points.</p>
+            </div>
+        </div>
+
+        <div class="dash-section">
+            <div class="section-header-row">
+                <div>
+                    <p class="sec-subtitle">MEMBERSHIP BENEFITS</p>
+                    <h2 class="sec-title">CLASSIC</h2>
+                </div>
+                <a href="#" class="see-all-link">SEE ALL BENEFITS</a>
+            </div>
+            <div class="benefits-grid">
+                <div class="b-card"><span>🎁</span><p>Exclusive Member Rates & Offers</p></div>
+                <div class="b-card"><span>🛎️</span><p>Priority Check-in & Check-out</p></div>
+                <div class="b-card"><span>🛍️</span><p>Celestia Rewards (Redeem Points on purchases in our online store)</p></div>
+                <div class="b-card"><span>⭐</span><p>10 Points for every PHP 50 spent on rooms and dining</p></div>
+                <div class="b-card"><span>🎂</span><p>Birthday Celebrations Treats - 3X Points and 20% off dining voucher</p></div>
+            </div>
+        </div>
+
+        <div class="dash-section">
+            <p class="sec-subtitle">REWARDS</p>
+            <h2 class="sec-title">Redeem Now</h2>
+            
+            <div class="rewards-grid">
+                <div class="reward-card">
+                    <img src="https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg" alt="Dining Voucher">
+                    <div class="r-card-body">
+                        <p class="r-pts">2,600 PTS ONWARDS</p>
+                        <h3>PHP 500 Dining Voucher</h3>
+                        <p class="r-desc">Indulge in an enjoyable dining experience with the Celestia Dining Voucher.</p>
+                        <div class="r-card-footer">
+                            <a href="#">VIEW DETAILS</a>
+                            <button class="btn-disabled">REDEEM</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="reward-card">
+                    <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg" alt="Room Upgrade">
+                    <div class="r-card-body">
+                        <h3>Combine Points & payment for your next stay</h3>
+                        <p class="r-desc">Not enough Points to redeem your next stay? Enjoy the flexibility of combining Points and payment.</p>
+                        <div class="r-card-footer right-align">
+                            <button class="btn-outline-gold" onclick="window.location.href='index.html#rooms'">BOOK NOW</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="reward-card">
+                    <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg" alt="Shopping Rewards">
+                    <div class="r-card-body">
+                        <h3>MyRewards</h3>
+                        <p class="r-desc">Choose your treats from over 100 exciting gifts and vouchers. Spotify, Apple, Uber and Amazon are just some of the rewards you can choose from!</p>
+                        <div class="r-card-footer right-align">
+                            <button class="btn-outline-gold">REDEEM NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>CELESTIA</h2>
+                <p>Elevated Luxury</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>1 Celestia Avenue, Bonifacio Global City</p>
+                <p>Phone: +63 2 8777 9999</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Celestia Hotel. All Rights Reserved. Designed by Jabez Dulay.</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="global.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

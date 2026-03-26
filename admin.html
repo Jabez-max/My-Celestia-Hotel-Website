@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .admin-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 35, 50, 0.7);
+            z-index: 99999; 
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .admin-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        .admin-modal-box {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            border-top: 6px solid #b88b4a;
+            position: relative;
+            pointer-events: auto; 
+        }
+        .admin-modal-overlay.show .admin-modal-box {
+            transform: translateY(0);
+        }
+        .admin-modal-box h3 { 
+            margin-top: 0; 
+            color: #1a2332; 
+            font-size: 1.6rem; 
+            font-family: 'Times New Roman', serif;
+            margin-bottom: 10px;
+        }
+        .admin-modal-box p { 
+            color: #666; 
+            margin-bottom: 30px; 
+            line-height: 1.6; 
+            font-size: 1rem;
+        }
+        .admin-modal-actions { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+        }
+        .admin-modal-actions button {
+            padding: 12px 25px; 
+            border: none; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.2s;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 100000;
+        }
+        .btn-modal-cancel { 
+            background: #eaeaea; 
+            color: #555; 
+        }
+        .btn-modal-cancel:hover { background: #d4d4d4; }
+        
+        .btn-modal-ok { 
+            background: #b88b4a; 
+            color: #fff; 
+        }
+        .btn-modal-ok:hover { background: #9c753b; }
+    </style>
+</head>
+<body>
+
+    <script>
+        if (sessionStorage.getItem('celestia_admin_logged_in') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+
+    <div id="admin-custom-modal" class="admin-modal-overlay">
+        <div class="admin-modal-box">
+            <h3 id="admin-modal-title">Notification</h3>
+            <p id="admin-modal-message">Message here.</p>
+            <div class="admin-modal-actions">
+                <button id="admin-modal-cancel" class="btn-modal-cancel" onclick="closeAdminModal()">Cancel</button>
+                <button id="admin-modal-ok" class="btn-modal-ok" onclick="executeModalAction()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <aside class="admin-sidebar">
+        <div class="admin-brand">CELESTIA<br><span style="font-size: 0.8rem; color: #fff;">ADMINISTRATOR</span></div>
+        <ul class="admin-nav">
+            <li><a href="#" class="active" onclick="switchAdminTab(event, 'sec-overview', 'Dashboard Overview')">📊 Dashboard Overview</a></li>
+            <li><a href="#" onclick="switchAdminTab(event, 'sec-bookings', 'Room Bookings')">🛏️ Room Bookings</a></li>
+            <li><a href="#" onclick="switchAdminTab(event, 'sec-rfp', 'Event RFPs (Requests)')">📝 Event RFPs</a></li>
+            <li><a href="#" onclick="switchAdminTab(event, 'sec-guests', 'Guest Directory')">👥 Guest Directory</a></li>
+            <li><a href="#" onclick="switchAdminTab(event, 'sec-settings', 'System Settings')">⚙️ System Settings</a></li>
+        </ul>
+        <div class="admin-logout">
+            <a href="#" onclick="showAdminModal('Log Out', 'Are you sure you want to securely log out of the Admin Dashboard?', 'confirm', () => { sessionStorage.removeItem('celestia_admin_logged_in'); window.location.href='admin-login.html'; })">🚪 LOGOUT</a>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-header">
+            <h2 id="admin-page-title">Dashboard Overview</h2>
+            <div class="admin-profile">
+                <span>👋 Welcome, Hotel Manager</span>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            
+            <div id="sec-overview" class="admin-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Bookings</h3>
+                        <p class="stat-value" id="stat-total-bookings">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Guests</h3>
+                        <p class="stat-value" id="stat-active-guests">0</p>
+                    </div>
+                    <div class="stat-card" style="border-bottom-color: #28a745;">
+                        <h3>System Status</h3>
+                        <p class="stat-value" style="color: #28a745; font-size: 1.8rem; margin-top: 10px;">ONLINE & SECURE</p>
+                    </div>
+                </div>
+
+                <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #eaeaea;">
+                    <h3 style="margin-top: 0; color: #1a2332; font-family: 'Times New Roman', serif;">Room Popularity Analytics</h3>
+                    <div style="position: relative; height: 300px; width: 100%;">
+                        <canvas id="roomChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <h3>Welcome to Celestia Admin Portal</h3>
+                    <p style="color: #666; line-height: 1.6;">Use the sidebar on the left to navigate through different management modules. You can view all live room bookings, check event inquiries from the RFP forms, manage guest accounts, and adjust system settings.</p>
+                </div>
+            </div>
+
+            <div id="sec-bookings" class="admin-section">
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Live Room Reservations</h3>
+                        <button style="padding: 10px 20px; background: #b88b4a; border: none; color: white; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s;" onclick="refreshBookings(this)">Refresh Data</button>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ref ID</th>
+                                <th>Guest Details</th>
+                                <th>Room Type</th>
+                                <th>Check-in / Check-out</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-bookings-table">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="sec-rfp" class="admin-section">
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Request For Proposals (Inquiries)</h3>
+                        <button style="padding: 10px 20px; background: #1a2332; border: none; color: white; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s;" onclick="refreshRFPs(this)">Refresh RFPs</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date Submitted</th>
+                                <th>Client Name</th>
+                                <th>Event Type</th>
+                                <th>Target Date</th>
+                                <th>Estimated Pax</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-rfp-table">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="sec-guests" class="admin-section">
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Registered Celestia Members</h3>
+                        <button style="padding: 10px 20px; background: #1a2332; border: none; color: white; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s;" onclick="refreshGuests(this)">Refresh Status</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Member ID</th>
+                                <th>Guest Name</th>
+                                <th>Email Address</th>
+                                <th>Tier Level</th>
+                                <th>Total Points</th>
+                                <th>Account Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-guests-table">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="sec-settings" class="admin-section">
+                <div class="table-container settings-form">
+                    <h3 style="margin-top: 0; color: #1a2332;">Global Hotel Settings</h3>
+                    <hr style="border:0; border-top:1px solid #eaeaea; margin-bottom: 20px;">
+                    
+                    <label>Hotel Booking Status</label>
+                    <select id="setting-status">
+                        <option value="live">Open for Reservations (Live)</option>
+                        <option value="maintenance">Maintenance Mode (Paused)</option>
+                    </select>
+
+                    <label>Default Tax Rate (%)</label>
+                    <input type="number" id="setting-tax" value="12">
+
+                    <label>Members Discount Rate (%)</label>
+                    <input type="number" id="setting-discount" value="12">
+
+                    <button style="margin-top: 30px; padding: 10px 20px; background: #1a2332; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s;" onclick="saveAdminSettings(this)">SAVE SETTINGS</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        
+        let modalCallback = null;
+
+        function showAdminModal(title, message, type, callback = null) {
+            document.getElementById('admin-modal-title').innerText = title;
+            document.getElementById('admin-modal-message').innerText = message;
+            
+            const overlay = document.getElementById('admin-custom-modal');
+            const btnCancel = document.getElementById('admin-modal-cancel');
+            const btnOk = document.getElementById('admin-modal-ok');
+            
+            modalCallback = callback;
+            
+            if (type === 'alert' || type === 'success') {
+                btnCancel.style.display = 'none';
+                btnOk.innerText = 'Got it!';
+                btnOk.style.backgroundColor = type === 'success' ? '#28a745' : '#b88b4a';
+            } else if (type === 'confirm') {
+                btnCancel.style.display = 'inline-block';
+                btnOk.innerText = 'Yes, Proceed';
+                btnOk.style.backgroundColor = '#a10022';
+            }
+            
+            overlay.classList.add('show');
+        }
+
+        
+        function closeAdminModal() {
+            document.getElementById('admin-custom-modal').classList.remove('show');
+            modalCallback = null;
+        }
+
+        function executeModalAction() {
+            if (modalCallback) modalCallback();
+            closeAdminModal();
+        }
+
+        
+        let myChart = null; 
+
+        function loadAnalyticsChart() {
+           
+            if (typeof Chart === 'undefined') {
+                console.warn("Chart.js failed to load. Skipping chart rendering.");
+                return; 
+            }
+
+            let bookings = JSON.parse(localStorage.getItem('celestia_bookings')) || [];
+            
+            let roomCounts = {
+                "Classic Deluxe Room": 0,
+                "Celestia Club Room": 0,
+                "Executive Junior Suite": 0,
+                "Grand Executive Suite": 0,
+                "Signature Celestia Suite": 0,
+                "Royal Penthouse Suite": 0
+            };
+
+            bookings.forEach(b => {
+                if(b.status !== 'Cancelled' && roomCounts[b.room] !== undefined) {
+                    roomCounts[b.room] += 1;
+                }
+            });
+
+            const ctx = document.getElementById('roomChart');
+            if(!ctx) return;
+
+            if(myChart != null) {
+                myChart.destroy();
+            }
+
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(roomCounts),
+                    datasets: [{
+                        label: 'Total Active Bookings',
+                        data: Object.values(roomCounts),
+                        backgroundColor: [
+                            'rgba(184, 139, 74, 0.8)',
+                            'rgba(26, 35, 50, 0.8)',
+                            'rgba(184, 139, 74, 0.6)',
+                            'rgba(26, 35, 50, 0.6)',
+                            'rgba(184, 139, 74, 0.4)',
+                            'rgba(26, 35, 50, 0.4)'
+                        ],
+                        borderColor: '#1a2332',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            ticks: { stepSize: 1, precision: 0 } 
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // ==========================================
+        // UI & NAVIGATION
+        // ==========================================
+        function switchAdminTab(event, sectionId, pageTitle) {
+            event.preventDefault(); 
+
+            document.querySelectorAll('.admin-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            event.currentTarget.classList.add('active');
+
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('admin-page-title').innerText = pageTitle;
+
+            if(sectionId === 'sec-bookings') loadAdminBookings();
+            if(sectionId === 'sec-overview') {
+                loadAdminBookings();
+                loadAnalyticsChart();
+            }
+            if(sectionId === 'sec-rfp') loadAdminRFPs();
+            if(sectionId === 'sec-guests') loadGuestDirectory();
+        }
+
+        function refreshBookings(btn) {
+            let originalText = btn.innerText;
+            btn.innerText = "Refreshing...";
+            btn.style.opacity = "0.7";
+            setTimeout(() => {
+                loadAdminBookings();
+                loadAnalyticsChart();
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+            }, 600); 
+        }
+
+        function refreshRFPs(btn) {
+            let originalText = btn.innerText;
+            btn.innerText = "Refreshing...";
+            btn.style.opacity = "0.7";
+            setTimeout(() => {
+                loadAdminRFPs();
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+            }, 600);
+        }
+
+        function refreshGuests(btn) {
+            let originalText = btn.innerText;
+            btn.innerText = "Refreshing...";
+            btn.style.opacity = "0.7";
+            setTimeout(() => {
+                loadGuestDirectory();
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+            }, 600);
+        }
+
+        // ==========================================
+        // BOOKINGS LOGIC (WITH SMART COUNTER)
+        // ==========================================
+        function loadAdminBookings() {
+            const tableBody = document.getElementById('admin-bookings-table');
+            const totalBookingsDisplay = document.getElementById('stat-total-bookings');
+            const activeGuestsDisplay = document.getElementById('stat-active-guests');
+            
+            let bookings = JSON.parse(localStorage.getItem('celestia_bookings')) || [];
+            
+            if(totalBookingsDisplay) totalBookingsDisplay.innerText = bookings.length;
+            
+            let totalGuestsCount = 0;
+            bookings.forEach(booking => {
+                if (booking.status !== 'Cancelled' && booking.guests) {
+                    let adultMatch = booking.guests.match(/(\d+)\s*Adult/i);
+                    let adults = adultMatch ? parseInt(adultMatch[1]) : 0;
+                    
+                    let childMatch = booking.guests.match(/(\d+)\s*Child/i);
+                    let children = childMatch ? parseInt(childMatch[1]) : 0;
+                    
+                    totalGuestsCount += (adults + children);
+                }
+            });
+            if(activeGuestsDisplay) activeGuestsDisplay.innerText = totalGuestsCount;
+
+            if (bookings.length === 0 && tableBody) {
+                tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 30px; color: #888;">No recent bookings found. Waiting for guests...</td></tr>`;
+                return;
+            }
+
+            if (tableBody) {
+                let tableHTML = '';
+                bookings.slice().reverse().forEach((booking, index) => {
+                    let currentUser = JSON.parse(localStorage.getItem('celestia_currentUser'));
+                    let guestName = currentUser ? currentUser.name : "Walk-in Guest";
+                    let realIndex = bookings.length - 1 - index;
+
+                    let badgeClass = booking.status === 'Cancelled' ? 'status-badge cancelled' : 'status-badge';
+                    let actionButton = booking.status === 'Cancelled' 
+                        ? `<span style="color: #a10022; font-weight: bold; font-size: 0.8rem;">CANCELLED</span>` 
+                        : `<button class="btn-action" onclick="cancelBooking(${realIndex})">Cancel</button>`;
+
+                    tableHTML += `
+                        <tr>
+                            <td style="font-weight: bold;">${booking.id}</td>
+                            <td>
+                                <strong>${guestName}</strong><br>
+                                <span style="font-size: 0.8rem; color: #666;">${booking.guests}</span>
+                            </td>
+                            <td style="color: #b88b4a; font-weight: bold;">${booking.room}</td>
+                            <td style="font-size: 0.9rem;">${booking.dates}</td>
+                            <td style="font-weight: bold;">${booking.total}</td>
+                            <td><span class="${badgeClass}">${booking.status.toUpperCase()}</span></td>
+                            <td>${actionButton}</td>
+                        </tr>
+                    `;
+                });
+                tableBody.innerHTML = tableHTML;
+            }
+        }
+
+        function cancelBooking(index) {
+            showAdminModal(
+                "Cancel Booking", 
+                "Are you sure you want to cancel this reservation?", 
+                "confirm", 
+                () => {
+                    let bookings = JSON.parse(localStorage.getItem('celestia_bookings')) || [];
+                    bookings[index].status = "Cancelled"; 
+                    localStorage.setItem('celestia_bookings', JSON.stringify(bookings)); 
+                    loadAdminBookings(); 
+                    loadAnalyticsChart();
+                    showAdminModal("Booking Cancelled", "The reservation has been officially cancelled.", "success");
+                }
+            );
+        }
+
+        // ==========================================
+        // DYNAMIC GUEST DIRECTORY LOGIC
+        // ==========================================
+        function loadGuestDirectory() {
+            const guestTable = document.getElementById('admin-guests-table');
+            if (!guestTable) return;
+
+            let allUsers = JSON.parse(localStorage.getItem('celestia_allUsers')) || [];
+            let currentUser = JSON.parse(localStorage.getItem('celestia_currentUser'));
+            
+            if(allUsers.length === 0) {
+                allUsers = [{ id: '2026030704463020', name: 'Jabez Dulay', email: 'jabezdulay695@gmail.com', points: 672, tier: 'CLASSIC' }];
+                localStorage.setItem('celestia_allUsers', JSON.stringify(allUsers));
+            }
+
+            let tableHTML = '';
+
+            allUsers.forEach(user => {
+                let isOnline = currentUser && currentUser.email === user.email;
+                let statusText = isOnline ? "ONLINE" : "OFFLINE";
+                let statusColor = isOnline ? "#28a745" : "#888"; 
+                let pts = user.points || 0;
+                let tier = user.tier || 'CLASSIC';
+
+                tableHTML += `
+                    <tr>
+                        <td>${user.id}</td>
+                        <td><strong>${user.name}</strong></td>
+                        <td>${user.email}</td>
+                        <td><span style="color:#b88b4a; font-weight:bold;">${tier}</span></td>
+                        <td>${pts.toLocaleString()} pts</td>
+                        <td>
+                            <span class="status-badge" style="background-color: ${statusColor}; font-size: 0.8rem; padding: 5px 10px; border-radius: 4px; color: white; font-weight: bold; letter-spacing: 1px;">
+                                ${statusText}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            guestTable.innerHTML = tableHTML;
+        }
+
+        // ==========================================
+        // EVENT RFPs LOGIC
+        // ==========================================
+        function loadAdminRFPs() {
+            const rfpTableBody = document.getElementById('admin-rfp-table');
+            if (!rfpTableBody) return;
+
+            let rfps = JSON.parse(localStorage.getItem('celestia_rfps')) || [];
+
+            if (rfps.length === 0) {
+                rfpTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 30px; color: #888;">No pending Event Proposals (RFPs) at the moment.</td></tr>`;
+                return;
+            }
+
+            let tableHTML = '';
+            rfps.slice().reverse().forEach((rfp, index) => {
+                let realIndex = rfps.length - 1 - index;
+                tableHTML += `
+                    <tr>
+                        <td>${rfp.dateSubmitted}</td>
+                        <td><strong>${rfp.clientName}</strong><br><span style="font-size:0.8rem; color:#666;">${rfp.email}</span></td>
+                        <td>${rfp.eventType}</td>
+                        <td>${rfp.targetDate}</td>
+                        <td>${rfp.pax}</td>
+                        <td><span class="status-badge pending" style="background-color: #f39c12;">PENDING</span></td>
+                        <td>
+                            <button class="btn-action btn-approve" style="background-color: #28a745;" onclick="approveRFP(${realIndex})">Approve</button>
+                            <button class="btn-action" style="background:#888; margin-left: 5px;" onclick="deleteRFP(${realIndex})">Archive</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            rfpTableBody.innerHTML = tableHTML;
+        }
+
+        function approveRFP(index) {
+            showAdminModal(
+                "Proposal Approved! 🎉", 
+                "An automated approval email has been queued and will be sent to the client.", 
+                "success",
+                () => {
+                    let rfps = JSON.parse(localStorage.getItem('celestia_rfps')) || [];
+                    rfps.splice(index, 1);
+                    localStorage.setItem('celestia_rfps', JSON.stringify(rfps));
+                    loadAdminRFPs();
+                }
+            );
+        }
+
+        function deleteRFP(index) {
+            showAdminModal(
+                "Archive Request", 
+                "Are you sure you want to remove this pending inquiry from the list?", 
+                "confirm", 
+                () => {
+                    let rfps = JSON.parse(localStorage.getItem('celestia_rfps')) || [];
+                    rfps.splice(index, 1);
+                    localStorage.setItem('celestia_rfps', JSON.stringify(rfps));
+                    loadAdminRFPs();
+                }
+            );
+        }
+
+        // ==========================================
+        // SYSTEM SETTINGS LOGIC
+        // ==========================================
+        function loadAdminSettings() {
+            let settings = JSON.parse(localStorage.getItem('celestia_settings')) || { status: 'live', tax: 12, discount: 12 };
+            document.getElementById('setting-status').value = settings.status;
+            document.getElementById('setting-tax').value = settings.tax;
+            document.getElementById('setting-discount').value = settings.discount;
+        }
+
+        function saveAdminSettings(btn) {
+            let originalText = btn.innerText;
+            btn.innerText = "SAVING...";
+            btn.style.opacity = "0.7";
+
+            setTimeout(() => {
+                let newSettings = {
+                    status: document.getElementById('setting-status').value,
+                    tax: parseInt(document.getElementById('setting-tax').value),
+                    discount: parseInt(document.getElementById('setting-discount').value)
+                };
+                
+                localStorage.setItem('celestia_settings', JSON.stringify(newSettings));
+                showAdminModal("Settings Saved", "System Configurations successfully updated!", "success");
+                
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+            }, 600);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAdminBookings();
+            loadAdminRFPs();
+            loadAdminSettings();
+            loadGuestDirectory(); 
+            loadAnalyticsChart();
+        });
+    </script>
+</body>
+</html>

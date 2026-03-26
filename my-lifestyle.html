@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lifestyle | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+
+    <nav class="navbar">
+        <div class="nav-brand">CELESTIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Hotel</a></li>
+            <li><a href="index.html#rooms">Rooms & Suites</a></li>
+            <li><a href="index.html#dining">Dining</a></li>
+            <li><a href="meetings-events.html">Events</a></li>
+            <li><a href="dashboard.html" class="login-btn active">My Profile</a></li> 
+        </ul>
+    </nav>
+
+    <div class="dash-subnav">
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="my-account.html">My Account</a></li>
+            <li><a href="my-points.html">My Points Management</a></li>
+            <li><a href="my-history.html">My History</a></li>
+            <li><a href="my-communication.html">My Communication Preferences</a></li>
+            <li><a href="my-lifestyle.html">My Lifestyle</a></li>
+            <li><a href="celestia-enquiry.html">Celestia Enquiry</a></li> 
+        </ul>
+    </div>
+
+    <main class="ls-main-wrapper">
+        
+        <div class="ls-tabs-header">
+            <button class="ls-tab-btn active" onclick="switchLifestyleTab(event, 'tab-stay')">MY STAY PREFERENCES</button>
+            <button class="ls-tab-btn" onclick="switchLifestyleTab(event, 'tab-destinations')">MY FAVOURITE DESTINATIONS</button>
+            <button class="ls-tab-btn" onclick="switchLifestyleTab(event, 'tab-interests')">MY INTERESTS</button>
+        </div>
+
+        <div class="ls-content-area">
+            
+            <div id="tab-stay" class="ls-tab-content active">
+                <h2 class="ls-section-title">Accessibility</h2>
+                <div class="ls-pref-grid">
+                    <div class="ls-pref-btn" id="pref-near-lift" onclick="toggleExPref('pref-near-lift', 'pref-away-lift')">
+                        <span class="pref-icon">🚪</span> Near Lift
+                    </div>
+                    <div class="ls-pref-btn" id="pref-away-lift" onclick="toggleExPref('pref-away-lift', 'pref-near-lift')">
+                        <span class="pref-icon">🚶</span> Away from Lift
+                    </div>
+                    <div class="ls-pref-btn" id="pref-low-floor" onclick="toggleExPref('pref-low-floor', 'pref-high-floor')">
+                        <span class="pref-icon">🏢</span> Low Floor
+                    </div>
+                    <div class="ls-pref-btn" id="pref-high-floor" onclick="toggleExPref('pref-high-floor', 'pref-low-floor')">
+                        <span class="pref-icon">🏙️</span> High Floor
+                    </div>
+                </div>
+
+                <h2 class="ls-section-title">Room Preferences</h2>
+                <div class="ls-pref-grid">
+                    <div class="ls-pref-btn" id="pref-smoke" onclick="toggleExPref('pref-smoke', 'pref-no-smoke')">
+                        <span class="pref-icon">🚬</span> Smoking Room
+                    </div>
+                    <div class="ls-pref-btn" id="pref-no-smoke" onclick="toggleExPref('pref-no-smoke', 'pref-smoke')">
+                        <span class="pref-icon">🚭</span> Non-smoking
+                    </div>
+                </div>
+
+                <h2 class="ls-section-title">Additional Information</h2>
+                <p class="ls-subtitle">Anything else we should know?</p>
+                <textarea class="ls-textarea" placeholder="Share it with us, and we will try our best to fulfill them"></textarea>
+                
+                <div style="text-align: right;">
+                    <button class="btn-solid-dark" style="width: auto; padding: 15px 40px; background-color: #e0e0e0; color: #888;" onclick="showGlobalLoaderAndNavigate(null, 'Updating preferences...')">UPDATE INFORMATION</button>
+                </div>
+            </div>
+
+            <div id="tab-destinations" class="ls-tab-content">
+                
+                <div class="dest-gold-banner" onclick="toggleDestForm()">
+                    <h3>Add a new destination</h3>
+                    <span class="dest-plus">+</span>
+                </div>
+
+                <div id="dest-form" class="dest-form-container">
+                    <div class="acct-row two-cols" style="margin-bottom: 0;">
+                        <div class="acct-field">
+                            <label>Region</label>
+                            <select id="dest-region" onchange="populateCountries()">
+                                <option value="" disabled selected>Select Region</option>
+                                <option value="Asia">Asia</option>
+                                <option value="Europe">Europe</option>
+                                <option value="North America">North America</option>
+                                <option value="Middle East">Middle East</option>
+                            </select>
+                        </div>
+                        <div class="acct-field">
+                            <label>Country</label>
+                            <select id="dest-country" onchange="populateCities()" disabled>
+                                <option value="" disabled selected>Select Country first</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="acct-field" style="margin-top: 20px;">
+                        <label>City / Location</label>
+                        <select id="dest-city" disabled>
+                            <option value="" disabled selected>Select City first</option>
+                        </select>
+                    </div>
+                    <div style="text-align: right; margin-top: 20px;">
+                        <button class="btn-solid-dark" style="width: auto; padding: 12px 40px;" onclick="addDestination()">ADD DESTINATION</button>
+                    </div>
+                </div>
+
+                <div id="saved-destinations" style="margin-top: 30px;">
+                    </div>
+
+            </div>
+
+            <div id="tab-interests" class="ls-tab-content">
+                <h2 class="ls-section-title" style="margin-bottom: 30px;">Tell us what you are into</h2>
+                
+                <div class="interest-grid">
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">🛍️</div>
+                        <h4>Shopping</h4>
+                    </div>
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">🍷</div>
+                        <h4>Food and Wine</h4>
+                    </div>
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">🗺️</div>
+                        <h4>Sightseeing</h4>
+                    </div>
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">🧗</div>
+                        <h4>Active Tours</h4>
+                    </div>
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">👨‍👩‍👧‍👦</div>
+                        <h4>Family Activities</h4>
+                    </div>
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">🎭</div>
+                        <h4>Entertainment</h4>
+                    </div>
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">⚽</div>
+                        <h4>Sporting Events</h4>
+                    </div>
+                    <div class="int-card" onclick="toggleInterest(this)">
+                        <div class="int-icon">🌃</div>
+                        <h4>Nightlife</h4>
+                    </div>
+                </div>
+
+                <div style="text-align: right; margin-top: 40px;">
+                    <button class="btn-solid-dark" style="width: auto; padding: 15px 40px;" onclick="showGlobalLoaderAndNavigate(null, 'Saving interests...')">SAVE INTERESTS</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><h2>CELESTIA</h2><p>Elevated Luxury</p></div>
+            <div class="footer-contact"><h4>Contact Us</h4><p>1 Celestia Avenue, BGC</p></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Celestia Hotel. All Rights Reserved.</p></div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="global.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solstice Pool Bar | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="restaurant.css">
+    <style>
+        /* =========================================
+           FAQ SECTION STYLES
+        ========================================= */
+        .faq-section {
+            max-width: 1000px;
+            margin: 60px auto 100px auto;
+            padding: 0 20px;
+        }
+
+        .faq-main-title {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.2rem;
+            color: #1a2332;
+            margin-bottom: 40px;
+            font-weight: normal;
+        }
+
+        .faq-main-title span {
+            color: #b88b4a; /* Gold color */
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .faq-question {
+            font-family: Arial, sans-serif;
+            font-size: 1.1rem;
+            color: #333;
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #b88b4a;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: #888;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #b88b4a;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .faq-answer p {
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+            padding-bottom: 25px;
+            padding-right: 40px;
+        }
+    </style>
+</head>
+<body class="restaurant-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">CELESTIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Back to Home</a></li>
+            <li><a href="index.html#rooms">Rooms & Suites</a></li>
+            <li><a href="index.html#dining" class="active">Dining</a></li>
+            <li><a href="meetings-events.html">Events</a></li>
+            <li class="auth-buttons">
+                <a href="login.html" class="btn login-btn">Login</a>
+                <a href="signup.html" class="btn register-btn">Sign Up</a>
+            </li> 
+        </ul>
+    </nav>
+
+    <main class="res-container">
+        
+        <div class="res-header">
+            <h1 class="res-title">Solstice Pool Bar</h1>
+            <p class="res-subtitle">Dive into luxury, sip on perfection, and dazzle the night away</p>
+        </div>
+
+        <div class="res-top-grid">
+            <div class="res-description">
+                <p>Dive into indulgence at our Solstice Pool Bar, where every moment feels like a celestial vacation! Treat yourself to a mouthwatering selection of quick bites that satisfy every craving, paired perfectly with refreshing beverages crafted to uplift your spirits.</p>
+                <p>Whether you're lounging under the sun, enjoying a laid-back evening by the pool, or feeling the cool city breeze, the Solstice Pool Bar is your ultimate oasis for flavorful delights and sophisticated vibes.</p>
+                <p>Don’t miss our Live Acoustic & DJ Nights from Tuesday to Saturday, 7 PM – 11 PM, where the music flows as smoothly as the drinks, and the fun never stops!</p>
+            </div>
+
+            <div class="res-info-sidebar">
+                <a href="booking.html" class="res-book-btn">RESERVE A CABANA</a>
+                
+                <div class="res-contact-block">
+                    <h3>Contact Us</h3>
+                    <p><span>📍</span> 1 CELESTIA AVENUE, BONIFACIO GLOBAL CITY<br>TAGUIG, PHILIPPINES 1634</p>
+                    <p><span>📞</span> +63 2 8777 9999 EXT. 7355</p>
+                    <p><span>✉️</span> <a href="mailto:poolbar@celestiahotel.com">POOLBAR@CELESTIAHOTEL.COM</a></p>
+                    <p><span>🕒</span> OPEN DAILY<br>8:00AM TO 11:00PM</p>
+                </div>
+
+                <div class="res-menu-block">
+                    <h3>View Menu</h3>
+                    <ul class="res-menu-list">
+                        <li><a href="lobby-lounge-beverage-menu_sept2023.pdf" target="_blank">📄 BEVERAGE MENU</a></li>
+                        <li><a href="#" onclick="openMenuModal('pool-food', event)">📄 FOOD MENU</a></li>
+                        <li><a href="#" onclick="openMenuModal('pool-pika-pika', event)">📄 PIKA PIKA MENU</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="res-dress-code">
+            <h3>Dress Code</h3>
+            <p>Smart Casual / Stylish Resort Wear (No bermuda shorts, singlet, and open-toe shoes allowed in the main bar area)</p>
+        </div>
+
+        <div class="res-gallery-section">
+            <h3>Gallery <span class="photo-count">2 PHOTOS</span></h3>
+            <div class="res-gallery-grid">
+                <img src="https://images.pexels.com/photos/3201761/pexels-photo-3201761.jpeg" alt="Solstice Pool Bar Lounge">
+                <img src="https://images.pexels.com/photos/221457/pexels-photo-221457.jpeg" alt="Solstice Pool Infinity Edge">
+            </div>
+        </div>
+
+    </main>
+
+    <section class="faq-section">
+        <h2 class="faq-main-title">Frequently Asked Questions about <span>Solstice Pool Bar</span></h2>
+        
+        <div class="faq-container">
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What are Solstice Pool Bar operating hours? 
+                    <span class="faq-icon">⌄</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We are open daily from 8:00 AM to 11:00 PM. Food service is available throughout our operating hours.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you cater to dietary restrictions or allergies? 
+                    <span class="faq-icon">⌄</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We offer vegetarian, vegan, and gluten-free options. Please inform our staff when placing your order.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you offer delivery or takeaway options? 
+                    <span class="faq-icon">⌄</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our poolside food and handcrafted beverages are designed for dine-in to ensure the best quality. However, select pastries, sandwiches, and bottled drinks are available for takeaway.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is parking available? 
+                    <span class="faq-icon">⌄</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we have parking available. Complimentary valet and self-parking are provided for all visiting guests at Celestia Hotel.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="restaurant-menu-modal" class="custom-modal-overlay">
+        <div class="menu-modal-box">
+            <button class="menu-close-btn" onclick="closeMenuModal()">✕</button>
+            <div class="menu-modal-header">
+                <h2 id="dynamic-menu-title">Menu</h2>
+                <p id="dynamic-menu-subtitle">Available Daily</p>
+            </div>
+            <div id="dynamic-menu-content" class="menu-items-container"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>CELESTIA</h2>
+                <p>Elevated Luxury</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>1 Celestia Avenue, Bonifacio Global City</p>
+                <p>Taguig City, Metro Manila, Philippines</p>
+                <p>Phone: +63 2 8777 9999</p>
+                <p>Email: reservations@celestiahotel.com</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#hotel-info">About the Hotel</a></li>
+                    <li><a href="index.html#rooms">Our Rooms</a></li>
+                    <li><a href="index.html#dining">Dining</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Celestia Hotel. All Rights Reserved. Designed by Jabez Dulay.</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="global.js"></script>
+</body>
+</html>

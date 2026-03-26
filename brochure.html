@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request for Brochure | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="events.css">
+</head>
+<body class="rfp-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">CELESTIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Back to Home</a></li>
+            <li><a href="meetings-events.html">Meetings & Events</a></li>
+            <li><a href="auth.html" class="login-btn">Sign In / Join</a></li> 
+        </ul>
+    </nav>
+
+    <main class="rfp-main-container">
+        <div class="rfp-header">
+            <h1>Request for Brochure</h1>
+            <p>Find out more about our hotel and wide range of services. Simply fill out this form, and we'll send you the brochures you've requested.</p>
+        </div>
+
+        <form class="rfp-form" onsubmit="submitBrochure(event)">
+            
+            <div class="rfp-section">
+                <h2>Brochure Options</h2>
+                <div class="rfp-checkbox-column" style="margin-top: 20px;">
+                    <label><input type="checkbox" name="brochureType" value="hotel"> Hotel Brochure</label>
+                    <label><input type="checkbox" name="brochureType" value="ceremonies"> Ceremonies & Celebrations brochure</label>
+                </div>
+            </div>
+
+            <div class="rfp-section">
+                <h2>Your Contact Details</h2>
+                
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <select id="title" required>
+                            <option value="" disabled selected></option>
+                            <option value="mr">Mr.</option>
+                            <option value="mrs">Mrs.</option>
+                            <option value="ms">Ms.</option>
+                            <option value="dr">Dr.</option>
+                        </select>
+                        <label for="title">Title*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="text" id="firstName" required placeholder=" ">
+                        <label for="firstName">First Name*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="text" id="lastName" required placeholder=" ">
+                        <label for="lastName">Last Name*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="tel" id="phoneNumber" required placeholder=" ">
+                        <label for="phoneNumber">Phone Number*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="email" id="emailAddress" required placeholder=" ">
+                        <label for="emailAddress">Email Address*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="text" id="companyName" placeholder=" ">
+                        <label for="companyName">Company Name</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <select id="country" required>
+                            <option value="" disabled selected></option>
+                            <option value="philippines">Philippines</option>
+                            <option value="usa">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="australia">Australia</option>
+                            <option value="japan">Japan</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <label for="country">Country and Region*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="text" id="address" required placeholder=" ">
+                        <label for="address">Address*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="text" id="zipCode" required placeholder=" ">
+                        <label for="zipCode">Postal/Zip Code*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <select id="state" required>
+                            <option value="" disabled selected></option>
+                            <option value="metro-manila">Metro Manila</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <label for="state">State/Province*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-row one-col">
+                    <div class="rfp-field">
+                        <input type="text" id="city" required placeholder=" ">
+                        <label for="city">City*</label>
+                    </div>
+                </div>
+
+                <div class="rfp-checkbox-column spaced-checks">
+                    <label>
+                        <input type="checkbox" name="privacy" required> By submitting your request, you are agreeing to our <a href="#" style="color: #31708f; font-weight: bold; margin-left: 5px;">Privacy Policy.</a>
+                    </label>
+                </div>
+
+                <div class="dummy-recaptcha">
+                    <div class="rc-anchor">
+                        <input type="checkbox" required> I'm not a robot
+                    </div>
+                    <div class="rc-logo">
+                        <span style="font-size: 1.5rem;">♻️</span><br>reCAPTCHA
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <button type="submit" class="btn-solid btn-gold" style="padding: 15px 50px; font-size: 1rem;">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>CELESTIA</h2>
+                <p>Elevated Luxury</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>1 Celestia Avenue, Bonifacio Global City</p>
+                <p>Taguig City, Metro Manila, Philippines</p>
+                <p>Phone: +63 2 8777 9999</p>
+                <p>Email: reservations@celestiahotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Celestia Hotel. All Rights Reserved. Designed by Jabez Dulay.</p>
+        </div>
+    </footer>
+
+   <script src="data.js"></script>
+    <script src="global.js"></script>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('type') === 'wedding') {
+                const weddingCheckbox = document.querySelector('input[name="brochureType"][value="ceremonies"]');
+                if (weddingCheckbox) {
+                    weddingCheckbox.checked = true;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

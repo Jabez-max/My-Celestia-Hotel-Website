@@ -1,0 +1,175 @@
+/* =========================================
+   AUTHENTICATION CSS (Sign In & Register)
+========================================= */
+.auth-page {
+    background-color: #fff;
+}
+
+.auth-wrapper, .register-wrapper {
+    margin: 80px auto 100px auto;
+    padding: 0 40px;
+}
+
+.auth-wrapper { max-width: 750px; }
+.register-wrapper { max-width: 1200px; margin-top: 60px; }
+
+.auth-main-title, .register-main-title {
+    font-size: 2.8rem;
+    color: #444;
+    margin-bottom: 40px;
+    font-weight: normal;
+}
+
+.register-main-title { font-size: 2.5rem; }
+
+.auth-sub-title, .register-sub-title {
+    font-size: 1.4rem;
+    color: #1a2332;
+    margin-bottom: 25px;
+    font-family: Arial, sans-serif;
+}
+
+.register-sub-title { color: #333; margin-bottom: 20px; }
+
+.auth-simple-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.auth-simple-field label {
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.auth-simple-field input, .dob-group select, .reg-select {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    font-family: Arial, sans-serif;
+    transition: 0.3s;
+    color: #333;
+    background: #fff;
+}
+
+.auth-simple-field input:focus, .dob-group select:focus, .reg-select:focus {
+    border-color: #1a2332;
+}
+
+.auth-options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+}
+
+.auth-options-row a, .policy-box a, .marketing-section a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-options-row a:hover, .policy-box a:hover, .marketing-section a:hover {
+    text-decoration: underline;
+}
+
+.auth-btn-row {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.auth-btn-row button, .btn-solid {
+    flex: 1;
+    padding: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: Arial, sans-serif;
+    border: none;
+    background: #9b763a;
+    color: white;
+    transition: 0.3s;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+.auth-btn-row button:hover, .btn-solid:hover { background: #7a5c2d; }
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0;
+    color: #666;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+}
+
+.auth-divider::before, .auth-divider::after { content: ''; flex: 1; border-bottom: 1px solid #ccc; }
+.auth-divider::before { margin-right: 20px; }
+.auth-divider::after { margin-left: 20px; }
+
+/* Social Buttons */
+.social-btn-row { display: flex; gap: 30px; margin-top: 20px; margin-bottom: 80px; }
+.register-grid .social-btn-row { margin-bottom: 40px; }
+
+.btn-fb, .btn-google, .btn-fb-light, .btn-google-light {
+    padding: 15px 20px; flex: 1; font-weight: bold; cursor: pointer;
+    display: flex; justify-content: center; align-items: center; gap: 15px;
+    font-family: Arial, sans-serif; font-size: 0.95rem; border: none; transition: 0.3s;
+}
+
+.btn-fb { background: #3b5998; color: white; }
+.btn-fb:hover { background: #2d4373; }
+.btn-google { background: white; color: #555; border: 1px solid #ccc; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.btn-google:hover { background: #f9f9f9; }
+
+.btn-fb-light, .btn-google-light { background: #f0f0f0; color: #555; border: 1px solid #ccc; font-weight: normal; }
+.btn-fb-light:hover, .btn-google-light:hover { background: #e0e0e0; }
+
+/* Register Specifics */
+.register-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 80px; }
+.policy-box { background-color: #f4f8fc; border: 1px solid #e1ebf4; padding: 20px; margin-bottom: 20px; }
+.dob-group { display: flex; gap: 15px; }
+
+.password-input-wrapper { position: relative; display: flex; align-items: stretch; }
+.password-input-wrapper input { flex: 1; }
+.toggle-pass-btn {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; font-family: Arial, sans-serif;
+    font-size: 0.6rem; font-weight: bold; color: #555; cursor: pointer;
+    text-align: center; line-height: 1.2;
+}
+
+.marketing-section { font-family: Arial, sans-serif; }
+.marketing-section h3 { font-size: 1rem; color: #333; margin-bottom: 15px; }
+.marketing-section p { font-size: 0.9rem; color: #444; line-height: 1.6; margin-bottom: 15px; }
+.marketing-checks { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
+.marketing-checks label { display: flex; align-items: center; gap: 10px; cursor: pointer; color: #444; font-size: 0.95rem; }
+.please-note { font-size: 0.85rem; color: #333; margin-bottom: 40px; line-height: 1.6; }
+
+/* ReCAPTCHA Dummy */
+.dummy-recaptcha {
+    margin-top: 30px; border: 1px solid #ddd; background: #fafafa;
+    padding: 15px 20px; width: 300px; display: flex; justify-content: space-between;
+    align-items: center; border-radius: 3px; font-family: Arial, sans-serif;
+}
+.rc-anchor { display: flex; align-items: center; gap: 15px; font-size: 0.9rem; color: #333; }
+.rc-logo { text-align: center; font-size: 0.65rem; color: #888; }
+
+/* Benefits Sidebar Styling */
+.benefits-sticky { position: sticky; top: 100px; }
+.benefit-item { display: flex; align-items: center; gap: 20px; margin-bottom: 35px; }
+.benefit-item .b-icon { font-size: 1.5rem; }
+.benefit-item .b-text { font-family: Arial, sans-serif; font-size: 0.9rem; color: #b88b4a; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
+
+@media screen and (max-width: 900px) {
+    .register-grid { grid-template-columns: 1fr; gap: 40px; }
+    .dob-group { flex-direction: column; gap: 10px; }
+}

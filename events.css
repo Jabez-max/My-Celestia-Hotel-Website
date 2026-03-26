@@ -1,0 +1,115 @@
+
+.events-page { background-color: #f9f9f9; }
+
+.events-hero { 
+    height: 60vh; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    position: relative; 
+}
+.events-hero-text p { font-family: Arial, sans-serif; font-size: 1.2rem; color: #fff; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); margin-bottom: 5px; }
+.events-hero-text h1 { font-size: 4rem; color: #fff; font-weight: normal; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
+
+.events-main-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 80px 20px; position: relative; top: -50px; }
+
+.events-cta-banner { background-color: #fff; box-shadow: 0 5px 20px rgba(0,0,0,0.1); padding: 40px 50px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+.cta-text h2 { font-size: 1.8rem; color: #333; font-family: Arial, sans-serif; margin-bottom: 5px; }
+.cta-text p { font-family: Arial, sans-serif; font-size: 1rem; color: #666; }
+
+.btn-gold { background-color: #9b763a; padding: 15px 30px; font-size: 0.85rem; color: white; border: none; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-weight: bold; text-decoration: none;}
+.btn-gold:hover { background-color: #7a5c2d; }
+
+.events-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 60px; background-color: #fff; padding: 50px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+
+.breadcrumbs { font-family: Arial, sans-serif; font-size: 0.8rem; color: #31708f; letter-spacing: 1px; margin-bottom: 20px; }
+.events-heading { font-size: 2rem; color: #333; font-weight: normal; margin-bottom: 20px; font-family: Arial, sans-serif; }
+.events-description p { font-family: Arial, sans-serif; font-size: 0.95rem; color: #555; line-height: 1.8; margin-bottom: 20px; }
+
+.info-heading { font-family: Arial, sans-serif; font-size: 1rem; color: #333; margin-bottom: 20px; letter-spacing: 1px; }
+.info-list { list-style: none; margin-bottom: 30px; }
+.info-list li { display: flex; gap: 15px; font-family: Arial, sans-serif; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.5; }
+.info-list a { color: #31708f; text-decoration: underline; }
+
+.events-btn-stack { display: flex; flex-direction: column; gap: 15px; }
+.full-width { width: 100%; text-align: center; border: 1px solid #31708f; color: #31708f; background: transparent; padding: 15px; font-family: Arial, sans-serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; text-decoration: none; display: inline-block;}
+.full-width:hover { background-color: #31708f; color: #fff; }
+
+
+.rfp-page { background-color: #fdfdfd; }
+.rfp-main-container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+
+.rfp-header { margin-bottom: 40px; }
+.rfp-header h1 { font-size: 2.5rem; color: #1a2332; margin-bottom: 15px; font-weight: bold; }
+.rfp-header p { font-family: Arial, sans-serif; font-size: 1rem; color: #444; line-height: 1.6; }
+
+.rfp-form { background: transparent; }
+.rfp-section { margin-bottom: 50px; }
+.rfp-section h2 { font-size: 1.8rem; color: #1a2332; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+
+.rfp-row { display: flex; gap: 30px; margin-bottom: 30px; }
+.rfp-row.three-cols > div, .rfp-row.two-cols > div, .rfp-row.four-cols > div { flex: 1; }
+.rfp-row.one-col > div { width: 100%; }
+
+.rfp-field { position: relative; width: 100%; display: flex; flex-direction: column; }
+.rfp-field input, .rfp-field select { width: 100%; padding: 10px 0; font-size: 1rem; border: none; border-bottom: 1px solid #1a2332; outline: none; background: transparent; font-family: Arial, sans-serif; color: #333; }
+.rfp-field select { cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill="%231a2332" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); background-repeat: no-repeat; background-position: right center; }
+.rfp-field label { position: absolute; top: 10px; left: 0; font-size: 1rem; color: #1a2332; pointer-events: none; transition: 0.3s ease all; font-family: Arial, sans-serif; }
+
+.rfp-field input:focus ~ label, .rfp-field input:not(:placeholder-shown) ~ label, .rfp-field select:focus ~ label, .rfp-field select:valid ~ label { top: -18px; font-size: 0.8rem; font-weight: bold; color: #666; }
+
+.field-hint { font-family: Arial, sans-serif; font-size: 0.75rem; color: #888; margin-top: 5px; }
+.disabled-field input { color: #888; border-bottom: 1px solid #ccc; cursor: not-allowed; }
+.disabled-field label { top: -18px !important; font-size: 0.8rem !important; font-weight: bold; color: #888; }
+
+.rfp-radio-group { font-family: Arial, sans-serif; margin-bottom: 30px; display: flex; align-items: center; gap: 20px; }
+.rfp-label-text { font-size: 1rem; color: #1a2332; }
+.rfp-radio-group label { display: flex; align-items: center; gap: 8px; cursor: pointer; color: #444; font-size: 0.95rem; }
+
+.setup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+.setup-card { border: 1px solid #ddd; padding: 15px 20px; display: flex; align-items: center; gap: 15px; font-family: Arial, sans-serif; font-size: 0.9rem; color: #444; cursor: pointer; transition: 0.3s; border-radius: 4px; background: #fff; }
+.setup-card span { font-size: 1.5rem; }
+.setup-card:hover { border-color: #b88b4a; }
+.setup-card.active { border-color: #b88b4a; background-color: #fdfaf0; color: #1a2332; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+.rfp-checkbox-column { display: flex; flex-direction: column; gap: 15px; font-family: Arial, sans-serif; }
+.rfp-checkbox-column label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95rem; color: #444; }
+.inline-other { border: none; border-bottom: 1px solid #ccc; outline: none; padding: 5px; width: 250px; font-family: Arial, sans-serif; }
+.inline-other:focus { border-color: #1a2332; }
+.spaced-checks { margin-top: 30px; gap: 25px; }
+
+
+.capacity-page { background-color: #f4f6f9; }
+.capacity-main-container { max-width: 1000px; margin: 60px auto; padding: 60px 50px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.capacity-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 50px; }
+.capacity-header h1 { font-size: 2.2rem; color: #333; font-weight: normal; line-height: 1.2; font-family: Arial, sans-serif; }
+
+.capacity-logo-box { border: 3px solid #b88b4a; padding: 25px; text-align: center; color: #1a2332; }
+.capacity-logo-box h2 { font-size: 1.5rem; letter-spacing: 3px; font-weight: normal; margin-bottom: 5px; }
+.capacity-logo-box p { font-family: Arial, sans-serif; font-size: 0.75rem; letter-spacing: 2px; }
+
+.table-responsive { overflow-x: auto; }
+.capacity-table { width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; }
+.capacity-table th { padding: 20px 10px; color: #666; font-weight: normal; font-size: 0.85rem; border-bottom: 1px solid #ddd; text-align: center; vertical-align: bottom; }
+.capacity-table th:first-child { text-align: left; }
+.table-icon { font-size: 2rem; display: block; margin-bottom: 10px; opacity: 0.5; }
+.capacity-table td { padding: 25px 10px; border-bottom: 1px solid #f0f0f0; color: #444; font-size: 0.95rem; text-align: center; }
+.capacity-table td:first-child { text-align: left; font-weight: normal; color: #333; width: 35%; }
+.capacity-table tr:hover td { background-color: #fcfcfc; }
+
+
+@media screen and (max-width: 900px) {
+    .events-cta-banner { flex-direction: column; text-align: center; gap: 20px; padding: 30px 20px; }
+    .events-grid { grid-template-columns: 1fr; padding: 30px 20px; }
+    .events-hero-text h1 { font-size: 2.5rem; }
+    .rfp-row { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+    .date-time-row { grid-template-columns: 1fr 1fr; display: grid; gap: 30px; }
+    .rfp-radio-group { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .capacity-header { flex-direction: column; gap: 30px; align-items: center; text-align: center; }
+    .capacity-main-container { padding: 40px 20px; }
+    .capacity-table th, .capacity-table td { padding: 15px 5px; font-size: 0.8rem; }
+}

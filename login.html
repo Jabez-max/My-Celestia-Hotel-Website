@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Celestia Hotel</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-page">
+
+    <nav class="navbar">
+        <div class="nav-brand">CELESTIA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Back to Home</a></li>
+            <li><a href="index.html#rooms">Rooms & Suites</a></li>
+            <li><a href="index.html#dining">Dining</a></li>
+            <li><a href="meetings-events.html">Events</a></li>
+            <li><a href="weddings.html">Weddings</a></li>
+            <li class="auth-buttons">
+                <a href="login.html" class="btn login-btn">Login</a>
+                <a href="signup.html" class="btn register-btn">Sign Up</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="auth-wrapper" style="max-width: 550px; margin: 80px auto;">
+        
+        <h1 class="register-main-title" style="text-align: center;">Login to Celestia</h1>
+
+        <div class="register-form-container" style="background: #fff; padding: 40px; border: 1px solid #e1ebf4; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 8px;">
+            
+            <form onsubmit="handleLogin(event, 'Email')">
+                
+                <div class="auth-simple-field" style="width: 100%;">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required style="width: 100%; box-sizing: border-box;">
+                </div>
+                
+                <div class="auth-simple-field" style="width: 100%;">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required style="width: 100%; box-sizing: border-box;">
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; font-family: Arial, sans-serif; font-size: 0.9rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #444;">
+                        <input type="checkbox" style="width: 16px; height: 16px;"> Remember me
+                    </label>
+                    <a href="#" style="color: #b88b4a; text-decoration: none; font-weight: bold;">Forgot password?</a>
+                </div>
+
+                <div class="dummy-recaptcha" style="width: 100%; max-width: 100%; margin-bottom: 20px; padding: 10px 15px;">
+                    <div class="rc-anchor">
+                        <input type="checkbox" required> <span>I'm not a robot</span>
+                    </div>
+                    <div class="rc-logo" style="display: flex; flex-direction: column; align-items: center;">
+                        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" width="24">
+                        <span style="font-size: 0.6rem;">reCAPTCHA</span>
+                    </div>
+                </div>
+
+                <div class="auth-btn-row" style="display: flex; gap: 15px;">
+                    <button type="submit" class="btn-solid btn-gold" style="flex: 1;">LOGIN</button>
+                    <button type="button" class="btn-solid" style="flex: 1; background: #1a2332;" onclick="window.location.href='signup.html'">SIGN UP</button>
+                </div>
+                
+                <div class="auth-divider" style="margin: 30px 0;"><span>Or</span></div>
+
+                <div style="text-align: center; font-family: Arial, sans-serif; margin-bottom: 15px;">
+                    <p style="color: #444; font-weight: bold;">Login with Social Media</p>
+                </div>
+
+                <div class="social-btn-row" style="margin-bottom: 0;">
+                    <button type="button" class="btn-fb-light" onclick="handleSocialRegister('Facebook')">
+                        <span class="social-logo" style="color: #3b5998; font-weight: bold; font-size: 1.2rem;">f</span> Facebook
+                    </button>
+                    <button type="button" class="btn-google-light" onclick="handleSocialRegister('Google')">
+                        <span class="social-logo" style="color: #ea4335; font-weight: bold; font-size: 1.2rem;">G</span> Google
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>CELESTIA</h2>
+                <p>Elevated Luxury</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>1 Celestia Avenue, Bonifacio Global City</p>
+                <p>Taguig City, Metro Manila, Philippines</p>
+                <p>Phone: +63 2 8777 9999</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Celestia Hotel. All Rights Reserved. Designed by Jabez Dulay.</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="global.js"></script>
+</body>
+</html>

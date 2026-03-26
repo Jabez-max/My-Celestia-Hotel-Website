@@ -1,0 +1,174 @@
+
+.restaurant-page {
+    background: #fdfdfd;
+}
+
+.res-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.res-header {
+    margin-bottom: 40px;
+    border-bottom: 2px solid #b88b4a;
+    padding-bottom: 20px;
+}
+
+.res-title {
+    font-size: 2.8rem;
+    color: #1a2332;
+    font-weight: normal;
+}
+
+.res-subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    color: #1a2332;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.res-top-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.res-description p {
+    font-family: Arial, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.res-book-btn {
+    display: block;
+    text-align: center;
+    background: white;
+    color: #1a2332;
+    border: 1px solid #1a2332;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    margin-bottom: 30px;
+}
+
+.res-book-btn:hover {
+    background: #1a2332;
+    color: white;
+}
+
+.res-contact-block, 
+.res-menu-block {
+    margin-bottom: 30px;
+}
+
+.res-contact-block h3, 
+.res-menu-block h3 {
+    font-size: 1.6rem;
+    color: #1a2332;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.res-contact-block p {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+    line-height: 1.6;
+}
+
+.res-contact-block a { color: #555; text-decoration: underline; }
+
+.res-menu-list {
+    list-style: none;
+    padding-top: 10px;
+}
+
+.res-menu-list li { margin-bottom: 20px; }
+
+.res-menu-list a {
+    color: #000;
+    text-decoration: underline;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s;
+    text-transform: uppercase;
+}
+
+.res-menu-list a:hover { color: #b88b4a; }
+
+.res-dress-code { margin-bottom: 50px; }
+.res-dress-code h3 { font-size: 1.8rem; font-weight: normal; color: #1a2332; margin-bottom: 15px; }
+.res-dress-code p { font-family: Arial, sans-serif; font-size: 1rem; color: #555; }
+
+.res-gallery-section { margin-bottom: 60px; }
+.res-gallery-section h3 { font-size: 2.2rem; font-weight: normal; color: #1a2332; margin-bottom: 20px; }
+.photo-count { font-family: Arial, sans-serif; font-size: 0.75rem; font-weight: bold; color: #1a2332; text-decoration: underline; }
+
+.res-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.res-gallery-grid img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+
+.custom-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(26, 35, 50, 0.85);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+
+.custom-modal-overlay.active { opacity: 1; visibility: visible; }
+
+.menu-modal-box {
+    background: white; padding: 40px; border-radius: 8px;
+    max-width: 700px; width: 90%; max-height: 85vh; overflow-y: auto;
+    border-top: 6px solid #b88b4a; position: relative;
+}
+
+.menu-close-btn {
+    position: absolute; top: 20px; right: 25px; background: none; border: none;
+    font-size: 2rem; color: #555; cursor: pointer;
+}
+.menu-close-btn:hover { color: #1a2332; }
+
+.menu-modal-header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+.menu-modal-header h2 { font-size: 2.2rem; color: #1a2332; margin-bottom: 5px; font-weight: normal;}
+.menu-modal-header p { font-family: Arial, sans-serif; font-size: 0.9rem; color: #b88b4a; letter-spacing: 2px; text-transform: uppercase;}
+
+.menu-category-title { font-size: 1.5rem; color: #1a2332; margin-bottom: 15px; margin-top: 30px; border-bottom: 1px dashed #ccc; padding-bottom: 5px; }
+
+.menu-item { display: flex; gap: 20px; margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px;}
+.menu-item-info { flex: 1; text-align: left; }
+.menu-item-name { font-size: 1.2rem; color: #1a2332; margin-bottom: 5px; }
+.menu-item-desc { font-family: Arial, sans-serif; font-size: 0.85rem; color: #666; font-style: italic; }
+.menu-item-price { font-family: Arial, sans-serif; font-size: 1.1rem; font-weight: bold; color: #b88b4a; }
+
+@media screen and (max-width: 900px) {
+    .res-top-grid { grid-template-columns: 1fr; gap: 30px; }
+    .res-gallery-grid { grid-template-columns: 1fr; }
+    .menu-item { flex-direction: column; text-align: center; align-items: center; }
+}
